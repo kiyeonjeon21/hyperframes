@@ -18,7 +18,7 @@
     "test": "vitest run",
     "dev": "tsx src/cli.ts",
     "build": "bun run build:fonts && tsup && bun run build:runtime && bun run build:copy",
-    "build:fonts": "cd ../producer && tsx scripts/generate-font-data.ts",
+    "build:fonts": "node -e \"const fs=require('fs');if(!fs.existsSync('../producer/src/services/fontData.generated.ts')){const {execSync}=require('child_process');execSync('cd ../producer && tsx scripts/generate-font-data.ts',{stdio:'inherit'})}else{console.log('[build:fonts] skipped — fontData.generated.ts already exists')}\"",
     "build:runtime": "tsx scripts/build-runtime.ts",
     "build:copy": "node scripts/build-copy.mjs",
     "typecheck": "tsc --noEmit"
