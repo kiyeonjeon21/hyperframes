@@ -17,7 +17,7 @@ interface RecordEditInput {
   files: Record<string, { before: string; after: string }>;
 }
 
-interface UseManifestPersistenceParams {
+interface UsePreviewPersistenceParams {
   projectId: string | null;
   showToast: (message: string, tone?: "error" | "info") => void;
   readOptionalProjectFile: (path: string) => Promise<string>;
@@ -37,7 +37,7 @@ interface UseManifestPersistenceParams {
 
 // ── Hook ──
 
-export function useManifestPersistence({
+export function usePreviewPersistence({
   projectId,
   showToast: _showToast,
   readOptionalProjectFile: _readOptionalProjectFile,
@@ -48,7 +48,7 @@ export function useManifestPersistence({
   domEditSaveTimestampRef,
   reloadPreview,
   pendingTimelineEditPathRef,
-}: UseManifestPersistenceParams) {
+}: UsePreviewPersistenceParams) {
   void _showToast;
   void _recordEdit;
   void _activeCompPathRef;
